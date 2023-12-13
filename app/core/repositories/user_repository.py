@@ -1,6 +1,6 @@
 from app.core.models.user_model import UserModel
 from app.core.schemas.user import User
-from app.interfaces.user_reposotiry import UserRepository
+from app.interfaces.repositories.user_reposotiry import UserRepository
 from app.db.database import DBInterface
 
 
@@ -10,7 +10,10 @@ class SQLAlchemyUserRepository(UserRepository):
 
     def create(self, user: User) -> User:
         db_user = UserModel(
-            name=user.name, password=user.password, created_at=user.created_at
+            name=user.name,
+            password=user.password,
+            email=user.email,
+            updated_at=user.updated_at,
         )
         self.session.add(db_user)
         self.session.commit()
@@ -20,7 +23,8 @@ class SQLAlchemyUserRepository(UserRepository):
             id=db_user.id,
             name=db_user.name,
             password=db_user.password,
-            created_at=db_user.created_at,
+            email=db_user.email,
+            updated_at=db_user.updated_at,
         )
 
     def get(self, user_id: int) -> User:
@@ -31,6 +35,6 @@ class SQLAlchemyUserRepository(UserRepository):
                 id=db_user.id,
                 name=db_user.name,
                 password=db_user.password,
-                created_at=db_user.created_at,
+                updated_at=db_user.updated_at,
             )
         return None

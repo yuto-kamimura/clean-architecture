@@ -1,8 +1,8 @@
 from app.core.schemas.word import Word
-from app.interfaces.word_repository import WordRepository
+from app.interfaces.repositories.word_repository import WordRepository
+from app.interfaces.usecases.word_usecase import WordUseCases
 
-
-class WordUseCase:
+class WordUseCases(WordUseCases):
     def __init__(self, word_repository: WordRepository):
         self.word_repository = word_repository
 

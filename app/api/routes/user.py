@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.core.use_cases.user_use_cases import UserUseCase
+from app.core.use_cases.user_use_cases import UserUseCases
 from app.core.schemas.user import User
 from app.core.repositories.user_repository import SQLAlchemyUserRepository
 from app.db.database import PostgreseDB
@@ -8,7 +8,7 @@ router = APIRouter()
 
 # リポジトリの実装を注入
 user_repository = SQLAlchemyUserRepository(PostgreseDB())
-user_usecase = UserUseCase(user_repository)
+user_usecase = UserUseCases(user_repository)
 
 
 @router.post("/users/", status_code=201)
@@ -19,7 +19,7 @@ def create_user_endpoint(user: User):
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail="Internal server error" + str(e))
 
 
 @router.get("/users/{user_id}")

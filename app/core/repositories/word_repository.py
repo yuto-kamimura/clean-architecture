@@ -1,6 +1,6 @@
 from app.core.models.word_model import WordModel
 from app.core.schemas.word import Word
-from app.interfaces.word_repository import WordRepository
+from app.interfaces.repositories.word_repository import WordRepository
 from app.db.database import DBInterface
 
 

@@ -9,4 +9,5 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement="auto")
     name = Column(String, nullable=False)
     password = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False)
+    email = Column(String, nullable=False)
+    updated_at = Column(TIMESTAMP, nullable=False)

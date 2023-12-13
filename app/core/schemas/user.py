@@ -6,4 +6,5 @@ class User(BaseModel):
     id: int
     name: str
     password: str
-    created_at: datetime.datetime
+    email: str
+    updated_at: datetime.datetime

@@ -1,10 +1,10 @@
 import bcrypt
 
 from app.core.schemas.user import User
-from app.interfaces.user_reposotiry import UserRepository
+from app.interfaces.repositories.user_reposotiry import UserRepository
+from app.interfaces.usecases.user_usecase import UserUseCases
 
-
-class UserUseCase:
+class UserUseCases(UserUseCases):
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
 
