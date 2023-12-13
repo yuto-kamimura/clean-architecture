@@ -1,0 +1,9 @@
+alembic
+fastapi
+Mak
+psycopg2
+pydantic
+SQLAlchemy
+starlette
+uvicorn
+bcrypt
