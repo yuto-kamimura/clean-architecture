@@ -6,7 +6,7 @@ from app.db.database import DBInterface
 
 class SQLAlchemyUserRepository(UserRepository):
     def __init__(self, db: DBInterface):
-        self.session = db.db_session()
+        self._session = db.db_session()
 
     def create(self, user: User) -> User:
         db_user = UserModel(
@@ -15,10 +15,10 @@ class SQLAlchemyUserRepository(UserRepository):
             email=user.email,
             updated_at=user.updated_at,
         )
-        self.session.add(db_user)
-        self.session.commit()
-        self.session.refresh(db_user)
-        self.session.close()
+        self._session.add(db_user)
+        self._session.commit()
+        self._session.refresh(db_user)
+        self._session.close()
         return User(
             id=db_user.id,
             name=db_user.name,
@@ -28,8 +28,8 @@ class SQLAlchemyUserRepository(UserRepository):
         )
 
     def get(self, user_id: int) -> User:
-        db_user = self.session.query(UserModel).filter(UserModel.id == user_id).first()
-        self.session.close()
+        db_user = self._session.query(UserModel).filter(UserModel.id == user_id).first()
+        self._session.close()
         if db_user:
             return User(
                 id=db_user.id,

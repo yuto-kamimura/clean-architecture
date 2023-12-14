@@ -19,7 +19,7 @@ from app.api.routes.word import router as word_router
 app = FastAPI()
 
 # app.add_middleware(
-#     CORSMiddleware,
+#     # CORSMiddleware,
 #     allow_origins=["*"],
 #     allow_credentials=True,  # 追記により追加
 #     allow_methods=["*"],  # 追記により追加

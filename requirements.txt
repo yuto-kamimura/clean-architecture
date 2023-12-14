@@ -7,3 +7,6 @@ SQLAlchemy
 starlette
 uvicorn
 bcrypt
+httpx
+pytest
+pytest-mock
