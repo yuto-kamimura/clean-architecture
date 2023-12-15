@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from app.core.adapters.word_adapter import WordAadapter
 from app.core.use_cases.word_use_case import WordUseCases
 from app.core.schemas.word import Word
 from app.core.repositories.word_repository import SQLAlchemyWordRepository
