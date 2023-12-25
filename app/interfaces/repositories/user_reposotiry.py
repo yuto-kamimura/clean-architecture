@@ -10,3 +10,7 @@ class UserRepository(ABC):
     @abstractmethod
     def get(self, item_id: int) -> User:
         pass
+
+    @abstractmethod
+    def get_by_email(self, email: str) -> User:
+        pass

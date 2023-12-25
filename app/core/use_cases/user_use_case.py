@@ -16,7 +16,7 @@ class UserUseCases(UserUseCases):
         return self._user_repository.get(user_id)
 
     def authenticate_user(self, plain_user: User) -> User:
-        user = self._user_repository.get(plain_user.id)
+        user = self._user_repository.get_by_email(plain_user.email)
 
         if user and self._verify_password(user, plain_user):
             return user

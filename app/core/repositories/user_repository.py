@@ -35,6 +35,20 @@ class SQLAlchemyUserRepository(UserRepository):
                 id=db_user.id,
                 name=db_user.name,
                 password=db_user.password,
+                email=db_user.email,
+                updated_at=db_user.updated_at,
+            )
+        return None
+    
+    def get_by_email(self, email: str) -> User:
+        db_user = self._session.query(UserModel).filter(UserModel.email == email).first()
+        self._session.close()
+        if db_user:
+            return User(
+                id=db_user.id,
+                name=db_user.name,
+                password=db_user.password,
+                email=db_user.email,
                 updated_at=db_user.updated_at,
             )
         return None

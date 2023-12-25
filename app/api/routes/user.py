@@ -28,7 +28,7 @@ def get_user_endpoint(user_id: int):
             raise HTTPException(status_code=404, detail="User not found")
         return user
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail="Internal server error" + str(e))
 
 
 @router.post("/login/", status_code=200)
@@ -37,6 +37,6 @@ def post_user_endpoint(user: User):
         login_user = user_use_cases.authenticate_user(user)
         if login_user is None:
             return HTTPException(status_code=403, detail="Login failed")
-        return user
+        return None
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail="Internal server error" + str(e))
